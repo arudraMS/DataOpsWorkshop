@@ -2,10 +2,10 @@
 page_type: sample
 languages: python, csharp, typeScript, bicep, 
 products: azure, azure-data-factory, azure-databricks, azure-stream-analytics, azure-data-lake-gen2, azure-functions
-description: "Code samples showcasing how to apply DevOps concepts to the Modern Data Warehouse Architecture leveraging different Azure Data Technologies."
+description: "Code samples showcasing how to apply DevOps concepts to the Modern Lakehouse Architecture leveraging different Azure Data Technologies."
 ---
 
-# DataOps for the Modern Lake Warehouse
+# DataOps for the Modern Lakehouse
 
 This repository contains code samples and artifacts on how to apply DevOps principles to data pipelines built according to the [Modern Data Warehouse (MDW)](https://azure.microsoft.com/en-au/solutions/architecture/modern-data-warehouse/) architectural pattern on [Microsoft Azure](https://azure.microsoft.com/en-au/).
 

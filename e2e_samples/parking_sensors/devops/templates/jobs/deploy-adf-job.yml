@@ -6,12 +6,10 @@ parameters:
 
 jobs:
 - deployment: deploy_adf
-  dependsOn: deploy_databricks
   displayName: 'Deploy to Azure Data Factory'
   pool:
     vmImage: 'windows-2019'
   variables:
-    packageWheelName: $[ dependencies.deploy_databricks.outputs['deploy_databricks.setPackageWheelName.packageWheelName'] ]
   environment: ${{ parameters.environmentName }}
   strategy:
     runOnce:

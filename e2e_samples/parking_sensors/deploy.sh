@@ -39,7 +39,6 @@ for env_name in dev prod; do  # dev prod
     ENV_NAME=$env_name \
     AZURE_LOCATION=$AZURE_LOCATION \
     AZURE_SUBSCRIPTION_ID=$AZURE_SUBSCRIPTION_ID \
-    AZURESQL_SERVER_PASSWORD=$AZURESQL_SERVER_PASSWORD \
     bash -c "./scripts/deploy_infrastructure.sh"  # inclues AzDevOps Azure Service Connections and Variable Groups
 done
 

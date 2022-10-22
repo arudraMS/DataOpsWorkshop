@@ -80,19 +80,6 @@ if [[ -z $arm_output ]]; then
 fi
 
 
-########################
-# RETRIEVE KEYVAULT INFORMATION
-
-echo "Retrieving KeyVault information from the deployment."
-
-kv_name=$(echo "$arm_output" | jq -r '.properties.outputs.keyvault_name.value')
-kv_dns_name=https://${kv_name}.vault.azure.net/
-
-# Store in KeyVault
-az keyvault secret set --vault-name "$kv_name" --name "kvUrl" --value "$kv_dns_name"
-az keyvault secret set --vault-name "$kv_name" --name "subscriptionId" --value "$AZURE_SUBSCRIPTION_ID"
-
-
 #########################
 # CREATE AND CONFIGURE SERVICE PRINCIPAL FOR ADLA GEN2
 

@@ -7,9 +7,6 @@
       },      
       "email_id": {
         "value": "support@domain.com"
-      },
-      "enable_monitoring": {
-        "value": true
       }
     }
   }

@@ -1,7 +1,6 @@
 param project string
 @allowed([
   'dev'
-  'stg'
   'prod'
 ])
 param env string

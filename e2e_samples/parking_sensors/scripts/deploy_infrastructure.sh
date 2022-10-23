@@ -180,10 +180,7 @@ RESOURCE_GROUP_NAME=${resource_group_name}
 AZURE_LOCATION=${AZURE_LOCATION}
 AZURE_STORAGE_ACCOUNT=${azure_storage_account}
 AZURE_STORAGE_KEY=${azure_storage_key}
-SP_STOR_NAME=${sp_stor_name}
-SP_STOR_ID=${sp_stor_id}
-SP_STOR_PASS=${sp_stor_pass}
-SP_STOR_TENANT=${sp_stor_tenant}
+DATAFACTORY_NAME=${datafactory_name}
 
 EOF
 echo "Completed deploying Azure resources $resource_group_name ($ENV_NAME)"

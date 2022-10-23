@@ -44,6 +44,8 @@ github_sc_name="${PROJECT}-github"
 github_sc_id=$(az devops service-endpoint list --output json |
     jq -r --arg NAME "$github_sc_name" '.[] | select(.name==$NAME) | .id')
 
+echo "Creating Pipelines in $AZDO_PIPELINES_BRANCH_NAME"
+
 createPipeline () {
     declare pipeline_name=$1
     declare pipeline_description=$2
@@ -61,8 +63,6 @@ createPipeline () {
 }
 
 # Build Pipelines
-createPipeline "ci-qa-python" "This pipeline runs python unit tests and linting."
-createPipeline "ci-qa-sql" "This pipeline builds the sql dacpac"
 createPipeline "ci-artifacts" "This pipeline publishes build artifacts"
 
 # Release Pipelines

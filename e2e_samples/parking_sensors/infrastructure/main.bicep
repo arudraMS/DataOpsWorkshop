@@ -1,6 +1,5 @@
 param project string = 'mdwdo'
 param env string = 'dev'
-param email_id string = 'arudra@microsoft.com'
 param location string = resourceGroup().location
 param deployment_id string
 

@@ -5,8 +5,5 @@
       "env": {
         "value": "dev"
       },      
-      "email_id": {
-        "value": "support@domain.com"
-      }  
     }
   }

@@ -21,7 +21,7 @@ resources:
 # variables:
 #   devAdfName: <DEV DATAFACTORY NAME>
  
-
+stages:
 - stage: deploy_to_prod
   displayName: 'Deploy to Prod'
   variables:

@@ -9,7 +9,6 @@ jobs:
   displayName: 'Deploy to Azure Data Factory'
   pool:
     vmImage: 'windows-2019'
-  variables:
   environment: ${{ parameters.environmentName }}
   strategy:
     runOnce:

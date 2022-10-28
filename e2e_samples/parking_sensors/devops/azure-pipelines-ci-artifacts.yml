@@ -23,7 +23,7 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - task: PublishBuildArtifacts@1
+    - task: PublishPipelineArtifacts@1
       inputs:
         PathtoPublish: '$(basePath)/adf/_scripts/deploymentadf.ps1'
         ArtifactName: 'adf_scripts'

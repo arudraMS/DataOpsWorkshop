@@ -3,9 +3,6 @@ trigger:
     include:
     - main
     - release/*
-  paths:
-    include:
-    - mdwdops-adf-dev-atnops/*
 
 pr: none
 

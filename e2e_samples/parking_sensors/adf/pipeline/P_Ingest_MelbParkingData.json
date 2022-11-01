@@ -71,7 +71,7 @@
 				]
 			},
 			{
-				"name": "DownloadBaysHubData",
+				"name": "DownloadBaysiHubData",
 				"type": "Copy",
 				"dependsOn": [
 					{

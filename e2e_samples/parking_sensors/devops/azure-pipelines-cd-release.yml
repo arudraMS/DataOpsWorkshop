@@ -3,9 +3,6 @@ trigger:
     include:
     - adf_publish
     - release/*
-  paths:
-    include:
-    - mdwdops-adf-dev-atnops/*
 
 pr: none
 

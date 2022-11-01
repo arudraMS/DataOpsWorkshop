@@ -1,8 +1,4 @@
-trigger:
-  branches:
-    include:
-    - adf_publish
-    - release/*
+trigger: none
 
 pr: none
 
@@ -12,12 +8,12 @@ resources:
     source: mdwdops-ci-artifacts
     trigger: 
       branches:
-      - adf_publish
+      - main
   repositories:
   - repository: mdwdataops_adfpublish
     type: github
     endpoint: mdwdops-github
-    name: arudraMS/DataOpsWorkshop
+    name: devlace/mdw-dataops-clone
     ref: adf_publish
 
 # The deployment script sets this as a Pipeline Variable, but you may choose to set it here in the definition

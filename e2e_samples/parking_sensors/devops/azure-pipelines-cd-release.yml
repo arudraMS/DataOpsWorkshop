@@ -8,7 +8,7 @@ resources:
     source: mdwdops-ci-artifacts
     trigger: 
       branches:
-      - main
+      - adf_publish
   repositories:
   - repository: mdwdataops_adfpublish
     type: github

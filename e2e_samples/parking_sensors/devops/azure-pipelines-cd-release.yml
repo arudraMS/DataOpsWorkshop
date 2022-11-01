@@ -26,7 +26,6 @@ stages:
   displayName: 'Deploy to Prod'
   variables:
   - group: mdwdops-release-prod
-  - group: mdwdops-secrets-prod
   jobs: 
   - template: templates/jobs/deploy-adf-job.yml
     parameters:

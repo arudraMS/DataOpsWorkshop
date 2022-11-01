@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-    - main
+    - adf_publish
     - release/*
   paths:
     include:

@@ -16,33 +16,9 @@ The samples are either focused on a single azure service (**Single Tech Samples*
 - Testing
 - Observability / Monitoring
 
-## Single Technology Samples
-
-- [Azure SQL](single_tech_samples/azuresql/)
-  - [CI/CD - AzureSQL](single_tech_samples/azuresql/)
-- [Data Factory](single_tech_samples/datafactory/)
-  - [CI/CD - ADF](single_tech_samples/datafactory/)
-- [Azure Synapse Analytics](single_tech_samples/synapseanalytics)
-- [Azure Databricks](single_tech_samples/databricks/)
-  - [IaC - Basic Azure Databricks deployment](single_tech_samples/databricks/sample1_basic_azure_databricks_environment/)
-  - [IaC - Enterprise Security and Data Exfiltration Protection Deployment](single_tech_samples/databricks/sample2_enterprise_azure_databricks_environment/)
-  - [IaC - Cluster Provisioning and Secure Data Access](single_tech_samples/databricks/sample3_cluster_provisioning_and_data_access/)
-  - [CI/CD - Databricks](single_tech_samples/databricks/sample4_ci_cd/)
-- [Stream Analytics](single_tech_samples/streamanalytics/)
-- [Azure Purview](single_tech_samples/purview/)
-  - [IaC - Azure Purview](single_tech_samples/purview/)
-
 ## End to End samples
 - **Parking Sensor Solution** - This demonstrates batch, end-to-end data pipeline following the MDW architecture, along with a corresponding CI/CD process.
 ![Architecture](docs/images/CI_CD_process_simplified.png?raw=true "Architecture")
-  This has two version of the solution:
-  - [Azure Data Factory and Azure Databricks Version](e2e_samples/parking_sensors/)
-  - [Azure Synapse Version](e2e_samples/parking_sensors_synapse/)
-- [**Temperature Events Solution**](e2e_samples/temperature_events) - This demonstrate a high-scale event-driven data pipeline with a focus on how to implement Observability and Load Testing.
-![Architecture](e2e_samples/temperature_events/images/temperature-events-architecture.png?raw=true "Architecture")
-- [**Dataset Versioning Solution**](e2e_samples/dataset_versioning) - This demonstrates how to use DataFactory to Orchestrate DataFlow, to do DeltaLoads into DeltaLake On DataLake(DoDDDoD).
-- [**MDW Data Governance and PII data detection**](e2e_samples/mdw_governance) - This sample demonstrates how to deploy the Infrastructure of an end-to-end MDW Pipeline using [Azure DevOps pipelines](https://azure.microsoft.com/en-au/services/devops/pipelines/) along with a focus around Data Governance and PII data detection.
-  - *Technology stack*: Azure DevOps, Azure Data Factory, Azure Databricks, Azure Purview, [Presidio](https://github.com/microsoft/presidio)
 
 ## Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

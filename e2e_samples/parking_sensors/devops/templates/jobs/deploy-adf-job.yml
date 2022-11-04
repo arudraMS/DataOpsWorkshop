@@ -22,7 +22,7 @@ jobs:
           inputs:
             azureSubscription: ${{ parameters.serviceConnection }}
             ScriptPath: '$(Pipeline.Workspace)/ciartifacts/adf_scripts/deploymentadf.ps1'
-            ScriptArguments: '-armTemplate "$(Pipeline.Workspace)\$(devAdfName)\ARMTemplateForFactory.json" -ResourceGroupName "$(rgName)" -DataFactoryName "$(adfName)" -predeployment $true'
+            ScriptArguments: '-armTemplate "$(Pipeline.Workspace)\adf_publish\$(devAdfName)\ARMTemplateForFactory.json" -ResourceGroupName "$(rgName)" -DataFactoryName "$(adfName)" -predeployment $true'
             azurePowerShellVersion: LatestVersion
           displayName: 'Azure PowerShell script: Stop ADF triggers'
 

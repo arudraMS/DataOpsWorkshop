@@ -18,7 +18,7 @@ The samples are either focused on a single azure service (**Single Tech Samples*
 
 ## End to End samples
 - **Parking Sensor Solution** - This demonstrates batch, end-to-end data pipeline following the MDW architecture, along with a corresponding CI/CD process.
-![Architecture](docs/images/DataOpsWorkShop-Episode4.drawio.svg?raw=true "Architecture")
+![Architecture](docs/images/DataOpsWorkShop-Episode4.drawio.png?raw=true "Architecture")
 
 ## Contributing
 This project welcomes contributions and suggestions.  Most contributions require you to agree to a

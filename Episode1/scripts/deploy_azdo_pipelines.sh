@@ -55,7 +55,7 @@ createPipeline () {
         --description "$pipeline_description" \
         --repository "$GITHUB_REPO_URL" \
         --branch "$AZDO_PIPELINES_BRANCH_NAME" \
-        --yaml-path "../devops/azure-pipelines-$pipeline_name.yml" \
+        --yaml-path "$GITHUB_HOME_DIR/devops/azure-pipelines-$pipeline_name.yml" \
         --service-connection "$github_sc_id" \
         --skip-first-run true \
         --output json | jq -r '.id')

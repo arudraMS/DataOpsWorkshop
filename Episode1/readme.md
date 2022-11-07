@@ -68,16 +68,6 @@ The following shows the overall architecture of the solution.
 
 ![Architecture](../docs/images/architecture.png?raw=true "Architecture")
 
-Sample PowerBI report
-
-![PowerBI report](../docs/images/PBI_parking_sensors.png?raw=true "PowerBI Report")
-
-### Continuous Integration and Continuous Delivery (CI/CD)
-
-The following shows the overall CI/CD process end to end.
-
-![CI/CD](../docs/images/CI_CD_process.png?raw=true "CI/CD")
-
 See [here](#build-and-release-pipeline) for details.
 
 ### Technologies used
@@ -138,77 +128,6 @@ The following summarizes key learnings and best practices demonstrated by this s
 - A proper monitoring solution should be in-place to ensure failures are identified, diagnosed and addressed in a timely manner. Aside from the base infrastructure and pipeline runs, data quality should also be monitored. A common area that should have data monitoring is the malformed record store.
 - As an example this repository showcases how to use open source framework [Great Expectations](https://docs.greatexpectations.io/docs/) to define, measure and report data quality metrics at different stages of the data pipeline. Captured Data Quality metrics are reported to Azure Monitor for further visualizing and alerting. Take a look at sample [Data Quality report](docs/images/data_quality_report.png) generated with Azure Monitor workbook. Great Expectations can be configured to generate HTML reports and host directly as static site on Azure Blob Storage. Read more on [How to host and share Data Docs on Azure Blob Storage](https://legacy.docs.greatexpectations.io/en/latest/guides/how_to_guides/configuring_data_docs/how_to_host_and_share_data_docs_on_azure_blob_storage.html).
   
-## Key Concepts
-
-### Build and Release Pipeline
-
-The Build and Release Pipelines definitions can be found [here](devops/README.md).
-
-#### Environments
-
-1. **Sandbox and Dev**- the DEV resource group is used by developers to build and test their solutions. It contains two logical environments - (1) a Sandbox environment per developer so each developer can make and test their changes in isolation prior committing to `main`, and (2) a shared Dev environment for integrating changes from the entire development team. "Isolated" sandbox environment are accomplish through a number of practices depending on the Azure Service.
-   - Databricks - developers use their dedicated Workspace folder to author and save notebooks. Developers can choose to spin up their own dedicated clusters or share a High-concurrency cluster.
-   - DataLake Gen2 - a "sandbox" file system is created. Each developer creates their own folder within this Sandbox filesystem.
-   - AzureSQL or SQLDW - A transient database (restored from DEV) is spun up per developer on demand.
-   - Data Factory - git integration allows them to make changes to their own branches and debug runs independently.
-2. **Stage** - the STG resource group is used to test deployments prior to going to production in a production-like environment. Integration tests are run in this environment.
-3. **Production** - the PROD resource group is the final Production environment.
-
-#### Build and Release Sequence
-
-There are eight numbered orange boxes describing the sequence from sandbox development to target environments:
-
-![CI/CD](../docs/images/CI_CD_process_sequence.png?raw=true "CI/CD")
-
-1. Developers develop in their own Sandbox environments within the DEV resource group and commit changes into their own short-lived git branches. (i.e. <developer_name>/<branch_name>)
-2. When changes are complete, developers raise a PR to `main` for review. This automatically kicks-off the PR validation pipeline which runs the unit tests, linting and DACPAC builds.
-3. On PR completion, the commit to `main` will trigger a Build pipeline -- publishing all necessary Build Artifacts.
-4. The completion of a successful Build pipeline will trigger the first stage of the Release pipeline. This deploys the publish build artifacts into the DEV environment, with the exception of Azure Data Factory*.
-5. Developers perform a Manual Publish to the DEV ADF from the collaboration branch (`main`). This updates the ARM templates in in the `adf_publish` branch.
-6. On the successful completion of the first stage, this triggers an Manual Approval Gate**. On Approval, the release pipeline continues with the second stage -- deploying changes to the Staging environment.
-7. Integration tests are run to test changes in the Staging environment.
-8. ***On the successful completion of the second stage, this triggers a second Manual Approval Gate. On Approval, the release pipeline continues with the third stage -- deploying changes to the Production environment.
-
-Notes:
-
-- This is a simplified Build and Release process for demo purposes based on [Trunk-based development practices](https://trunkbaseddevelopment.com/).
-- *A manual publish is required -- currently, this cannot be automated.
-- **The solution deployment script does not configure Approval Gates at the moment. See [Known Issues, Limitations and Workarounds](#known-issues-limitations-and-workarounds)
-- ***Many organization use dedicated Release Branches (including Microsoft) instead of deploying from `main`. See [Release Flow](https://devblogs.microsoft.com/devops/release-flow-how-we-do-branching-on-the-vsts-team/).
-
-More resources:
-
-- [Continuous Integration & Continuous Delivery with Databricks](https://databricks.com/blog/2017/10/30/continuous-integration-continuous-delivery-databricks.html)
-- [Continuous integration and delivery in Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/continuous-integration-deployment)
-- [Devops for AzureSQL](https://devblogs.microsoft.com/azure-sql/devops-for-azure-sql/)
-
-### Testing
-
-- Unit Testing - These test small pieces of functionality within your code. Data transformation code should have unit tests and can be accomplished by abstracting Data Transformation logic into packages. Unit tests along with linting are automatically run when a PR is raised to `main`.
-  - See here for [unit tests](./src/ddo_transform/tests/) within the solution and the corresponding [QA Pipeline](./devops/azure-pipelines-ci-qa-python.yml) that executes the unit tests on every PR.
-
-- Integration Testing - These are run to ensure integration points of the solution function as expected. In this demo solution, an actual Data Factory Pipeline run is automatically triggered and its output verified as part of the Release to the Staging Environment.
-  - See here for the [integration tests](./tests/integrationtests/) and the corresponding [Release Pipeline Job Definition](./devops/templates/jobs/integration-tests-job.yml) for running them as part of the Release pipeline.
-
-More resources:
-
-- [pytest-adf](https://github.com/devlace/pytest-adf) - Pytest helper plugin for integration testing Azure Data Factory
-- [nutter testing framework](https://github.com/microsoft/nutter) - Testing framework for Databricks notebooks.
-
-### Observability / Monitoring
-
- **Observability-as-Code** - Few key components of Observability and Monitoring are deployed and configured through Observability-as-Code at the time on Azure resources deployment. This includes log analytics workspace to collect monitoring data from key resources, central Azure dashboard to monitor key metrics and alerts to monitor the data pipelines. To learn more on monitoring specific service read below.
-
-#### Databricks
-
-- [Monitoring Azure Databricks with Azure Monitor](https://docs.microsoft.com/en-us/azure/architecture/databricks-monitoring/)
-- [Monitoring Azure Databricks Jobs with Application Insights](https://msdn.microsoft.com/en-us/magazine/mt846727.aspx)
-
-#### Data Factory
-
-- [Monitor Azure Data Factory with Azure Monitor](https://docs.microsoft.com/en-us/azure/data-factory/monitor-using-azure-monitor)
-- [Alerting in Azure Data Factory](https://azure.microsoft.com/en-in/blog/create-alerts-to-proactively-monitor-your-data-factory-pipelines/)
-
 ## How to use the sample
 
 ### Prerequisites

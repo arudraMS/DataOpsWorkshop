@@ -16,7 +16,7 @@ This repository contains code samples and artifacts on how to apply DevOps princ
 ![Architecture](docs/images/DataOpsWorkShop-Episode4.png?raw=true "Architecture")
 
 - **Parking Sensor Solution** - This demonstrates batch, end-to-end data pipeline following the MDW architecture, along with a corresponding CI/CD process.
-- Episode 1: Integrating Azure Infra and Azure Data Factory Pipeline with Github and Azure DevOps
+- [Episode 1:](./Episode1/) Integrating Azure Infra and Azure Data Factory Pipeline with Github and Azure DevOps
 - Episode 2: Integrating Azure Infra, Azure Data Factory and Azure ML Studio with Github and Azure DevOps
 - Episode 3: Integrating Azure Infra, Azure Data Factory, Azure ML Studio, Azure Data Bricks with with Github and Azure DevOps
 - Episode 4: Integrating Azure Infra, Azure Data Factory, Azure ML Studio, Azure Data Bricks, Azure Synapse, Azure SQL, Azure Keyvault with Github and Azure DevOps

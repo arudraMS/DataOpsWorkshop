@@ -272,69 +272,23 @@ If you've encountered any issues, please review the [Troubleshooting](../../docs
 
 After a successful deployment, you should have the following resources:
 
-- In Azure, **three (3) Resource Groups** (one per environment) each with the following Azure resources.
+- In Azure, **two (2) Resource Groups** (one per environment) each with the following Azure resources.
   - **Data Factory** - with pipelines, datasets, linked services, triggers deployed and configured correctly per environment.
   - **Data Lake Store Gen2** and a **Service Principal (SP)** with Storage Contributor rights assigned.
-  - **Databricks workspace**
-    - notebooks uploaded at `/notebooks` folder in the workspace
-    - SparkSQL tables created
-    - ADLS Gen2 mounted at `dbfs:/mnt/datalake` using the Storage Service Principal.
-    - Databricks KeyVault secrets scope created
-  - **Log Analytics Workspace** - including a kusto query on Query explorer -> Saved queries, to verify results that will be logged on Synapse notebooks (notebooks are not deployed yet).
-  - **Azure Synapse SQL Dedicated Pool (formerly SQLDW)** - currently, empty. The Release Pipeline will deploy the SQL Database objects.
-  - **Azure Synapse Spark Pool** - currently, empty. Configured to point the deployed Log Analytics workspace, under "Apache Spark Configuration".
-  - **Azure Synapse Workspace** - currently, empty.
-  - **Application Insights**
-  - **KeyVault** with all relevant secrets stored.
-- In Azure DevOps
-  - **Four (4) Azure Pipelines**
+ - In Azure DevOps
+  - **Two (2) Azure Pipelines**
     - mdwdops-cd-release - Release Pipeline
     - mdwdops-ci-artifacts - Build Pipeline
-    - mdwdops-ci-qa-python - "QA" pipeline runs on PR to `main`
-    - mdwdops-ci-qa-sql - "QA" pipeline runs on PR to `main`
-  - **Three (6) Variables Groups** - two per environment
+  - **Two (2) Variables Groups** - One per environment
     - mdwdops-release-dev
-    - mdwdops-secrets-dev*
-    - mdwdops-release-stg
-    - mdwdops-secrets-stg*
     - mdwdops-release-prod
-    - mdwdops-secrets-prod*
-  - **Four (4) Service Connections**
+  - **Three (3) Service Connections**
     - **Three Azure Service Connections** (one per environment) each with a **Service Principal** with Contributor rights to the corresponding Resource Group.
       - mdwdops-serviceconnection-dev
-      - mdwdops-serviceconnection-stg
       - mdwdops-serviceconnection-prod
     - **Github Service Connection** for retrieving code from Github
       - mdwdops-github
-  - **Three additional Service Principals** (one per environment) with Data Factory Contributor role for running Integration Tests
-
-Notes:
-
-- *These variable groups are currently not linked to KeyVault due to limitations of creating these programmatically. See [Known Issues, Limitations and Workarounds](#known-issues-limitations-and-workarounds)
-- Environments and Approval Gates are not deployed as part of this solution. See [Known Issues, Limitations and Workarounds](#known-issues-limitations-and-workarounds)
-
+      
 #### Clean up
 
 This sample comes with an [optional, interactive clean-up script](./scripts/clean_up.sh) which will delete resources with `mdwdops` in its name. It will list resources to be deleted and will prompt before continuing. IMPORTANT NOTE: As it simply searches for `mdwdops` in the resource name, it could list resources not part of the deployment! Use with care.
-
-### Data Lake Physical layout
-
-ADLS Gen2 is structured as the following:
-
-```text
-    datalake                    <- filesystem
-        /sys/databricks/libs    <- contains all libs, jars, wheels needed for processing
-        /data
-            /lnd                <- Bronze - landing folder where all data files are ingested into.
-            /interim            <- Silver - interim (cleansed) tables
-            /dw                 <- Gold - final tables 
-```
-
-### Known Issues, Limitations and Workarounds
-
-The following lists some limitations of the solution and associated deployment script:
-
-- Azure DevOps Variable Groups linked to KeyVault can only be created via the UI, cannot be created programmatically and was not incorporated in the automated deployment of the solution.
-  - **Workaround**: Deployment add sensitive configuration as "secrets" in Variable Groups with the downside of duplicated information. If you wish, you may manually link a second Variable Group to KeyVault to pull out the secrets. KeyVault secret names should line up with required variables in the Azure DevOps pipelines. See [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/library/variable-groups?view=azure-devops&tabs=yaml#link-secrets-from-an-azure-key-vault) for more information.
-- Azure DevOps Environment and Approval Gates can only be managed via the UI, cannot be managed programmatically and was not incorporated in the automated deployment of the solution.
-  - **Workaround**: Approval Gates can be easily configured manually. See [here](https://docs.microsoft.com/en-us/azure/devops/pipelines/process/environments?view=azure-devops#approvals) for more information.

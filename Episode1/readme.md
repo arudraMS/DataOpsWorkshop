@@ -66,17 +66,17 @@ The solution pulls near realtime [Melbourne Parking Sensor data](https://www.mel
 
 The following shows the overall architecture of the solution.
 
-![Architecture](../../docs/images/architecture.png?raw=true "Architecture")
+![Architecture](../docs/images/architecture.png?raw=true "Architecture")
 
 Sample PowerBI report
 
-![PowerBI report](../../docs/images/PBI_parking_sensors.png?raw=true "PowerBI Report")
+![PowerBI report](../docs/images/PBI_parking_sensors.png?raw=true "PowerBI Report")
 
 ### Continuous Integration and Continuous Delivery (CI/CD)
 
 The following shows the overall CI/CD process end to end.
 
-![CI/CD](../../docs/images/CI_CD_process.png?raw=true "CI/CD")
+![CI/CD](../docs/images/CI_CD_process.png?raw=true "CI/CD")
 
 See [here](#build-and-release-pipeline) for details.
 
@@ -158,7 +158,7 @@ The Build and Release Pipelines definitions can be found [here](devops/README.md
 
 There are eight numbered orange boxes describing the sequence from sandbox development to target environments:
 
-![CI/CD](../../docs/images/CI_CD_process_sequence.png?raw=true "CI/CD")
+![CI/CD](../docs/images/CI_CD_process_sequence.png?raw=true "CI/CD")
 
 1. Developers develop in their own Sandbox environments within the DEV resource group and commit changes into their own short-lived git branches. (i.e. <developer_name>/<branch_name>)
 2. When changes are complete, developers raise a PR to `main` for review. This automatically kicks-off the PR validation pipeline which runs the unit tests, linting and DACPAC builds.
@@ -285,7 +285,7 @@ More resources:
       - To enable Observability and Monitoring components through code(Observability-as-code), please set enable_monitoring parameter to true in  `arm.parameters` files located in the `infrastructure` folder. This will deploy log analytics workspace to collect monitoring data from key resources, setup an Azure dashboards to monitor key metrics and configure alerts for ADF pipelines.
 
 2. **Deploy Azure resources**
-   - `cd` into the `e2e_samples/parking_sensors` folder of the repo.
+   - `cd` into the `Episode1` folder of the repo.
    - Configure your default AzDo Organization and Project
 
       ```bash

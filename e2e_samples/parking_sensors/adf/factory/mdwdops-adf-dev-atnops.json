@@ -1,9 +1,0 @@
-{
-	"name": "mdwdops-adf-dev-atnops",
-	"location": "eastus",
-	"identity": {
-		"type": "SystemAssigned",
-		"principalId": "8be63d36-f81a-47ee-a69f-7b5d5500201a",
-		"tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-	}
-}

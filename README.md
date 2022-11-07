@@ -17,5 +17,5 @@ The episodes are focused on end to end data pipeline solution as a reference imp
 
 ## End to End samples
 - **Parking Sensor Solution** - This demonstrates batch, end-to-end data pipeline following the MDW architecture, along with a corresponding CI/CD process.
-- 
+
 ![Architecture](docs/images/DataOpsWorkShop-Episode4.png?raw=true "Architecture")

@@ -71,7 +71,7 @@
 				]
 			},
 			{
-				"name": "DownloadBaysData",
+				"name": "DownloadBayData",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -132,7 +132,7 @@
 			}
 		},
 		"annotations": [],
-		"lastPublishTime": "2021-08-03T05:18:18Z"
+		"lastPublishTime": "2022-11-08T16:50:11Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

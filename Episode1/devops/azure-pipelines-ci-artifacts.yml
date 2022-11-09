@@ -5,7 +5,7 @@ trigger:
 pr: none
 
 variables:
-  basePath: 'e2e_samples/parking_sensors'
+  basePath: 'Episode1'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 

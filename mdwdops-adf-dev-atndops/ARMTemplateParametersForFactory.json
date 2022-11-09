@@ -1,0 +1,21 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "mdwdops-adf-dev-atndops"
+		},
+		"Ds_AdlsGen2_MelbParkingData_properties_typeProperties_fileName": {
+			"value": "@dataset().infilename"
+		},
+		"Ds_AdlsGen2_MelbParkingData_properties_typeProperties_folderPath": {
+			"value": "@concat(dataset().container, '/', dataset().infilefolder)"
+		},
+		"Ls_AdlsGen2_01_properties_typeProperties_url": {
+			"value": "https://mdwdopsstdevatndops.dfs.core.windows.net"
+		},
+		"Ls_Rest_MelParkSensors_01_properties_typeProperties_url": {
+			"value": "https://data.melbourne.vic.gov.au/resource/"
+		}
+	}
+}

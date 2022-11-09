@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"name": "DownloadSensorData",
+				"name": "DownloadSensorsByData",
 				"type": "Copy",
 				"dependsOn": [
 					{

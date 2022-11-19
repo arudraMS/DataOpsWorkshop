@@ -1,30 +1,26 @@
+
+param location string = resourceGroup().location
 param project string = 'mdwdo'
 param env string = 'dev'
-param location string = resourceGroup().location
 param deployment_id string
 
-
 module datafactory './modules/datafactory.bicep' = {
-  name: 'datafactory_deploy_${deployment_id}'
+  name: '${project}-adf-${env}-${deployment_id}-deployment'
   params: {
-    project: project
-    env: env
+    datafactoryName:'${project}-adf-${env}-${deployment_id}'
     location: location
-    deployment_id: deployment_id
   }
 }
 
-module storage './modules/storage.bicep' = {
-  name: 'storage_deploy_${deployment_id}'
+module storageaccount './modules/storage.bicep' = {
+  name: '${project}st${env}${deployment_id}-deployment'
   params: {
-    project: project
-    env: env
+    storageName:'${project}st${env}${deployment_id}'
     location: location
-    deployment_id: deployment_id
-    contributor_principal_id: datafactory.outputs.datafactory_principal_id
+    contributorPrincipalId: datafactory.outputs.datafactoryPrincipalId
   }
 }
 
 
-output storage_account_name string = storage.outputs.storage_account_name
-output datafactory_name string = datafactory.outputs.datafactory_name
+output datafactory_name string = datafactory.outputs.datafactoryName
+output storage_account_name string = storageaccount.outputs.storageName

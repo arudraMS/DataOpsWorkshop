@@ -1,26 +1,27 @@
-param project string
+param location string
+param storageName string
 @allowed([
-  'dev'
-  'stg'
-  'prod'
+  'Standard_LRS'
+  'Standard_ZRS'
+  'Standard_GRS'
+  'Standard_GZRS'
+  'Standard_RAGRS'
+  'Standard_RAGZRS'
+  'Premium_LRS'
+  'Premium_ZRS'
 ])
-param env string
-param location string = resourceGroup().location
-param deployment_id string
-param contributor_principal_id string
+param storageSkuName string = 'Standard_LRS'
+param contributorPrincipalId string
 
-//https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles
-var storage_blob_data_contributor = '/subscriptions/${subscription().subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/ba92f5b4-2d11-453d-a403-e96b0029c9fe'
+
+var storageBlobDataContributor = subscriptionResourceId('Microsoft.Authorization/roleDefinitions', 'ba92f5b4-2d11-453d-a403-e96b0029c9fe') 
+//ba92f5b4-2d11-453d-a403-e96b0029c9fe is the id of storage_blob_data_contributor
 
 resource storage 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: '${project}st${env}${deployment_id}'
+  name: storageName
   location: location
-  tags: {
-    DisplayName: 'Data Lake Storage'
-    Environment: env
-  }
   sku: {
-    name: 'Standard_LRS'
+    name: storageSkuName
   }
   kind: 'StorageV2'
   properties: {
@@ -49,9 +50,12 @@ resource storage_roleassignment 'Microsoft.Authorization/roleAssignments@2020-08
   name: guid(storage.id)
   scope: storage
   properties: {
-    roleDefinitionId: storage_blob_data_contributor
-    principalId: contributor_principal_id
+    roleDefinitionId: storageBlobDataContributor
+    principalId: contributorPrincipalId
+    principalType: 'ServicePrincipal'
   }
 }
 
-output storage_account_name string = storage.name
+output storageId string = storage.id
+output storageName string = storage.name
+

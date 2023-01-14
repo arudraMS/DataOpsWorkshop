@@ -133,7 +133,7 @@ ADF_DIR=$adfTempDir \
     bash -c "./scripts/deploy_adf_artifacts.sh"
 
 # ADF SP for integration tests
-sp_adf_name="${PROJECT}-adf-${ENV_NAME}-${DEPLOYMENT_ID}-sp"
+sp_adf_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-adf-sp"
 sp_adf_out=$(az ad sp create-for-rbac \
     --role "Data Factory contributor" \
     --scopes "/subscriptions/$AZURE_SUBSCRIPTION_ID/resourceGroups/$resource_group_name/providers/Microsoft.DataFactory/factories/$datafactory_name" \

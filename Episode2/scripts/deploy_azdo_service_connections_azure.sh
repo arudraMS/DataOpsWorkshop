@@ -41,7 +41,7 @@ set -o nounset
 
 ###############
 # Setup Azure service connection
-az_service_connection_name="${PROJECT}-serviceconnection-$ENV_NAME"
+az_service_connection_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-serviceconnection"
 
 az_sub=$(az account show --output json)
 az_sub_id=$(echo "$az_sub" | jq -r '.id')

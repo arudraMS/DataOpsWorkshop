@@ -41,7 +41,7 @@ set -o xtrace # For debugging
 ###############
 # Setup Github service connection
 
-github_sc_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-github"
+github_sc_name="${PROJECT}-${DEPLOYMENT_ID}-github"
 export AZURE_DEVOPS_EXT_GITHUB_PAT=$GITHUB_PAT_TOKEN
 
 if sc_id=$(az devops service-endpoint list -o tsv | grep "$github_sc_name" | awk '{print $3}'); then

@@ -40,7 +40,7 @@ set -o xtrace # For debugging
 # DEV_DATAFACTORY_NAME
 
 # Retrieve Github Service Connection Id
-github_sc_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-github"
+github_sc_name="${PROJECT}-${DEPLOYMENT_ID}-github"
 github_sc_id=$(az devops service-endpoint list --output json |
     jq -r --arg NAME "$github_sc_name" '.[] | select(.name==$NAME) | .id')
 
@@ -49,7 +49,7 @@ echo "Creating Pipelines in $AZDO_PIPELINES_BRANCH_NAME"
 createPipeline () {
     declare pipeline_name=$1
     declare pipeline_description=$2
-    full_pipeline_name=${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-$pipeline_name
+    full_pipeline_name=${PROJECT}-${DEPLOYMENT_ID}-$pipeline_name
     pipeline_id=$(az pipelines create \
         --name "$full_pipeline_name" \
         --description "$pipeline_description" \

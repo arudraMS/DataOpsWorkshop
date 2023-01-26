@@ -10,7 +10,7 @@ description: "Code samples showcasing how to leverage DataOps for Modern Data Es
 This repository contains code samples and artifacts on how to apply DevOps principles to Infra, Data and Machine Learning pipelines built according to the following diagram. The episodes are focused on end to end data pipeline solution as a reference implementation. Each episode contains code and artifacts relating to setting up
 
 Session 1 (InfraOps):
-- Github Pipeline to deploy changes into Azure dev & production environments to build the followong resources
+- Github Infra Pipeline to deploy changes into Azure dev & production environments to build the followong resources
     * In Azure : Resource Groups, Storage Accounts, Data Factories, ML Workspaces
     * In Azure DevOps: Service Connections, Variable Groups, Build Pipeline and Release Pipeline
 

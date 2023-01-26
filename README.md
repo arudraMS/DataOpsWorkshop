@@ -1,6 +1,6 @@
 ---
 page_type: sample
-languages: Shell Script, Bicep, Yaml 
+languages: Shell Script, Bicep, Yaml, Python, Json
 products: Github, Azure Devops, Azure, Azure Data Lake Gen2, Azure Data Factory, Azure Ml Studio, Azure Databricks, Azure Synapse, Azure Sql
 description: "Code samples showcasing how to leverage DataOps for Modern Data Estate"
 ---

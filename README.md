@@ -5,7 +5,7 @@ products: Github, Azure Devops, Azure, Azure Data Lake Gen2, Azure Data Factory,
 description: "Code samples showcasing how to leverage DataOps for Modern Data Estate"
 ---
 
-# DataOps Connected to MLOPs for Modern Data Pipeline & Machine Learning Pipeline
+# DataOps to MLOPs for Modern Data Pipeline & Machine Learning Pipeline
 
 This repository contains code samples and artifacts on how to apply DevOps principles to Infra, Data and Machine Learning pipelines built according to the following diagram. The episodes are focused on end to end data pipeline solution as a reference implementation. Each episode contains code and artifacts relating to setting up
 

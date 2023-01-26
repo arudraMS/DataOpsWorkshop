@@ -9,14 +9,16 @@ description: "Code samples showcasing how to leverage DataOps for Modern Data Es
 
 This repository contains code samples and artifacts on how to apply DevOps principles to Infra, Data and Machine Learning pipelines built according to the following diagram. The episodes are focused on end to end data pipeline solution as a reference implementation. Each episode contains code and artifacts relating to setting up
 
-Episode 1 (DataOps):
-- Github Infrastructure Pipeline to deploy changes into Azure dev & production environments
-- Azure DevOps (ADO) Build and Release Pipelines to deploy changes in Azure Data Factory Dev and Production Data Pipeline
-- Automated Invocation of Production Data Pipeline based on any changes in Infrastructure and Data Pipeline
+Episode 1 (InfraOps):
+- Github Pipeline to deploy changes into Azure dev & production environments to build the followong resources
+    * In Azure : Resource Groups, Storage Accounts, Data Factories, ML Workspaces
+    * In Azure DevOps: Service Connections, Variable Groups, Build Pipeline and Release Pipeline
 
-Episode2 (MLOps):
-- Azure DevOps (ADO) Build and Release Pipelines to deploy changes in Azure ML Studio Dev and Production Pipeline
-- Automated Invocation of Production ML Pipelines based on any changes in Infrastructure Pipeline, Data Pipeline and ML Pipeline
+Episode2 (DataOps & MLOps):
+- Building a small data pipeline and ML pipeline
+- Triggering ADO Pipelines to deploy changes from ADF Dev to ADF Production Data Pipeline, followed by triggering ADF production pipeline, producing fresh data
+- Triggering ADO pipelines to deploy changes from AMLS Dev to Production ML Pipeline, followed by triggering AMLS production pipeline, producing fresh infrence
+- Triggering both the above in sequence based on changes in infrastructure, data and ML pipelines
 
 ![Architecture](docs/images/DataOpsWorkShop-Episode4.png?raw=true "Architecture")
 

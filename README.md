@@ -21,7 +21,3 @@ Episode2 (DataOps & MLOps):
 - Triggering both the above in sequence based on changes in infrastructure, data and ML pipelines
 
 ![Architecture](docs/images/DataOpsWorkShop-Episode4.png?raw=true "Architecture")
-
-- **Parking Sensor Solution** - This demonstrates batch, end-to-end data pipeline following the MDW architecture, along with a corresponding CI/CD process.
-- [Episode 1:](./Episode1/) Integrating Infra, Data Factory with Github & Azure DevOps (ADO)
-- [Episode 2:](./Episode2/) Integrating Infra, Data Factory, ML Studio with Github & ADO

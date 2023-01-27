@@ -24,13 +24,23 @@ Session 2 (DataOps & MLOps):
 
 
 ####Open Accounts in the following portal
+
 AZURE
 
 Github
 
 Azure DevOps (ADO)
 
-####Install the subscription, az cli,  python, jq which all come by default
+####Install the 
+
+subscription, 
+
+az cli,  
+
+python, 
+
+jq which all come by default
+
 Create a subscription (if you do not have one)
 Login to your subscription and open the cloud shell (if you do not have storage account, it will create the storage)
 Check the following installation by typing az --version, python3 --version, jq --version, az bicep upgrade

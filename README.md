@@ -52,20 +52,20 @@ Session 2 (DataOps & MLOps):
 #### Go to the DataOps Project folder
 - cd DataOpsWorkshop
 
-#### Run the following environment variables
+#### Run the following commands to export environment variables and set the Devops configuration
 - export DEPLOYMENT_ID=<>
 - export GITHUB_HOME_DIR="/"
 - export AZURE_SUBSCRIPTION_ID=$(az account show 2> /dev/null | jq ".id" -r)
 - export AZURE_LOCATION=eastus
-export GITHUB_PAT_TOKEN="<>"
-export GITHUB_REPO=arudraMS/DataOpsWorkshop
-export AZURE_DEVOPS_EXT_PAT="<>"
-export AZDO_ORGANIZATION_URL="https://dev.azure.com/<>/"
-export AZDO_PROJECT=DataOpsWorkShop
-export AZDO_PIPELINES_BRANCH_NAME=main
-az devops configure --defaults organization="$AZDO_ORGANIZATION_URL" project="$AZDO_PROJECT"
+- export GITHUB_PAT_TOKEN="<>"
+- export GITHUB_REPO=arudraMS/DataOpsWorkshop
+- export AZURE_DEVOPS_EXT_PAT="<>"
+- export AZDO_ORGANIZATION_URL="https://dev.azure.com/<>/"
+- export AZDO_PROJECT=DataOpsWorkShop
+- export AZDO_PIPELINES_BRANCH_NAME=main
+- az devops configure --defaults organization="$AZDO_ORGANIZATION_URL" project="$AZDO_PROJECT"
 
 #### Execute the following script	
-./scripts/clean_up.sh
-./deploy.sh
+- ./scripts/clean_up.sh
+- ./deploy.sh
 --------------------------------------------------------------------------------------------******************----------------------------------------------

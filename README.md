@@ -20,7 +20,7 @@ Session 2 (DataOps & MLOps):
 - Triggering ADO pipelines to deploy changes from AMLS Dev to Production ML Pipeline, followed by triggering AMLS production pipeline, producing fresh infrence
 - Triggering both the above in sequence based on changes in infrastructure, data and ML pipelines
 
-![Architecture](docs/images/DataOpsWorkShop-Episode4.png?raw=true "Architecture")
+![Architecture](docs/images/DataOpsToMLOps.drawio.png?raw=true "Architecture")
 
 
 ####Open Accounts in the following portal

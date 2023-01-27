@@ -23,64 +23,49 @@ Session 2 (DataOps & MLOps):
 ![Architecture](docs/images/DataOpsToMLOps.drawio.png?raw=true "Architecture")
 
 
-####Open Accounts in the following portal
+#### Open Accounts in the following portal
+- Azure
+- Github
+- Azure DevOps (ADO)
 
-AZURE
+#### Create a subscription (if you do not have one)
+- Login to your subscription and open the cloud shell (if you do not have storage account, it will create the storage)
+- Check the following installation by typing az --version, python3 --version, jq --version, az bicep upgrade
+- az cli
+- Python 3
+- jq
 
-Github
+#### Install bicep and azure devops for Infra as code and Infraops
+- az bicep (If not installed, run az bicep install)
+- az extension add --name azure-devops
+- code . (if it does not work, install monaco editor by typing npm install monaco-editor@0.34.1)
 
-Azure DevOps (ADO)
+#### Test the following
+- az account show --output table
+- az group list --output table
+- az group delete 
 
-####Install the 
+#### Download the GITHUB repository in your working wolder
+- git clone https://github.com/arudraMS/DataOpsWorkshop.git
+- chmod -R u+rwx DataOpsWorkshop
 
-subscription, 
+#### Go to the DataOps Project folder
+- cd DataOpsWorkshop
 
-az cli,  
-
-python, 
-
-jq which all come by default
-
-Create a subscription (if you do not have one)
-Login to your subscription and open the cloud shell (if you do not have storage account, it will create the storage)
-Check the following installation by typing az --version, python3 --version, jq --version, az bicep upgrade
-az cli
-Python 3
-jq
-
-###Install bicep and azure devops for Infra as code and Infraops
-az bicep (If not installed, run az bicep install)
-az extension add --name azure-devops
-code . (if it does not work, install monaco editor by typing npm install monaco-editor@0.34.1)
-
-####Install the following packages
-makepasswd
-
-####Test the following
-az account show --output table
-az group list --output table
-az group delete 
-
-####Download the GITHUB repository in your working wolder
-git clone https://github.com/arudraMS/DataOpsWorkshop.git
-chmod -R u+rwx DataOpsWorkshop
-
-####Go to the DataOps Project folder
-cd DataOpsWorkshop
-
-####Run the following environment variables
-export DEPLOYMENT_ID=<>
-export GITHUB_HOME_DIR="/"
-export AZURE_SUBSCRIPTION_ID=$(az account show 2> /dev/null | jq ".id" -r)
-export AZURE_LOCATION=eastus
+#### Run the following environment variables
+- export DEPLOYMENT_ID=<>
+- export GITHUB_HOME_DIR="/"
+- export AZURE_SUBSCRIPTION_ID=$(az account show 2> /dev/null | jq ".id" -r)
+- export AZURE_LOCATION=eastus
 export GITHUB_PAT_TOKEN="<>"
 export GITHUB_REPO=arudraMS/DataOpsWorkshop
 export AZURE_DEVOPS_EXT_PAT="<>"
 export AZDO_ORGANIZATION_URL="https://dev.azure.com/<>/"
 export AZDO_PROJECT=DataOpsWorkShop
 export AZDO_PIPELINES_BRANCH_NAME=main
-az devops configure --defaults organization="$AZDO_ORGANIZATION_URL" project="$AZDO_PROJECT"		
-####Execute the following script	
+az devops configure --defaults organization="$AZDO_ORGANIZATION_URL" project="$AZDO_PROJECT"
+
+#### Execute the following script	
 ./scripts/clean_up.sh
 ./deploy.sh
 --------------------------------------------------------------------------------------------******************----------------------------------------------

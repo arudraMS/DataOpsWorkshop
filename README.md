@@ -54,11 +54,13 @@ Session 2 (DataOps & MLOps):
 
 #### Run the following commands to export environment variables and set the Devops configuration
 - export DEPLOYMENT_ID=<>
-- export GITHUB_HOME_DIR="/"
 - export AZURE_SUBSCRIPTION_ID=$(az account show 2> /dev/null | jq ".id" -r)
 - export AZURE_LOCATION=eastus
+
+- export GITHUB_HOME_DIR="/"
 - export GITHUB_PAT_TOKEN="<>"
-- export GITHUB_REPO=arudraMS/DataOpsWorkshop
+- export GITHUB_REPO=<>/<>
+
 - export AZURE_DEVOPS_EXT_PAT="<>"
 - export AZDO_ORGANIZATION_URL="https://dev.azure.com/<>/"
 - export AZDO_PROJECT=DataOpsWorkShop

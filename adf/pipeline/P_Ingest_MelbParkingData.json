@@ -17,7 +17,7 @@
 				}
 			},
 			{
-				"name": "DownloadSensorData",
+				"name": "Download Rocket Data",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -51,7 +51,7 @@
 						"referenceName": "Ds_REST_MelbParkingData",
 						"type": "DatasetReference",
 						"parameters": {
-							"relativeurl": "dtpv-d4pf.json"
+							"relativeurl": "rockets"
 						}
 					}
 				],
@@ -71,7 +71,7 @@
 				]
 			},
 			{
-				"name": "DownloadBaysTypeData",
+				"name": "DownloadHistoryData",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -105,7 +105,7 @@
 						"referenceName": "Ds_REST_MelbParkingData",
 						"type": "DatasetReference",
 						"parameters": {
-							"relativeurl": "wuf8-susg.json"
+							"relativeurl": "history"
 						}
 					}
 				],
@@ -132,7 +132,7 @@
 			}
 		},
 		"annotations": [],
-		"lastPublishTime": "2022-11-09T06:28:15Z"
+		"lastPublishTime": "2023-01-27T14:19:28Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

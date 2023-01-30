@@ -5,7 +5,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://data.melbourne.vic.gov.au/resource/",
+			"url": "https://api.spacexdata.com/v3/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}

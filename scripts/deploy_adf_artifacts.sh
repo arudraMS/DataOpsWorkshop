@@ -74,12 +74,12 @@ echo "Deploying Data Factory artifacts."
 
 # Deploy all Linked Services
 createLinkedService "Ls_AdlsGen2_01"
-createLinkedService "Ls_Rest_MelParkSensors_01"
+createLinkedService "Ls_Rest_Spacex_01"
 # Deploy all Datasets
-createDataset "Ds_AdlsGen2_MelbParkingData"
-createDataset "Ds_REST_MelbParkingData"
+createDataset "Ds_AdlsGen2_SpaceXData"
+createDataset "Ds_REST_SpacexData"
 # Deploy all Pipelines
-createPipeline "P_Ingest_MelbParkingData"
+createPipeline "P_Ingest_SpacexData"
 # Deploy triggers
 createTrigger "T_Sched"
 

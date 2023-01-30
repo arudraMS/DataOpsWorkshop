@@ -1,5 +1,5 @@
 {
-	"name": "Ds_AdlsGen2_MelbParkingData",
+	"name": "Ds_AdlsGen2_SpacexData",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "Ls_AdlsGen2_01",

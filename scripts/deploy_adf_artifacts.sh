@@ -76,7 +76,7 @@ echo "Deploying Data Factory artifacts."
 createLinkedService "Ls_AdlsGen2_01"
 createLinkedService "Ls_Rest_Spacex_01"
 # Deploy all Datasets
-createDataset "Ds_AdlsGen2_SpaceXData"
+createDataset "Ds_AdlsGen2_SpacexData"
 createDataset "Ds_REST_SpacexData"
 # Deploy all Pipelines
 createPipeline "P_Ingest_SpacexData"

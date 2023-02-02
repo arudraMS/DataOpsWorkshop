@@ -103,7 +103,7 @@
 						]
 					},
 					{
-						"name": "DownloadHistory",
+						"name": "DownloadHistoryData",
 						"type": "Copy",
 						"dependsOn": [
 							{

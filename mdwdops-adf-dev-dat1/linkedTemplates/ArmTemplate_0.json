@@ -147,7 +147,7 @@
 						}
 					},
 					{
-						"name": "Download Rockets are Data",
+						"name": "Download Rockets are dhor Data",
 						"type": "Copy",
 						"dependsOn": [
 							{

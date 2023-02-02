@@ -147,7 +147,7 @@
 						}
 					},
 					{
-						"name": "Download Rockets are dhor Data",
+						"name": "Download Rockets",
 						"type": "Copy",
 						"dependsOn": [
 							{
@@ -201,7 +201,7 @@
 						]
 					},
 					{
-						"name": "DownloadHistoryData",
+						"name": "DownloadHistory",
 						"type": "Copy",
 						"dependsOn": [
 							{

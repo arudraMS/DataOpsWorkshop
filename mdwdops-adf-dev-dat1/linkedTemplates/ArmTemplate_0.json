@@ -147,7 +147,7 @@
 						}
 					},
 					{
-						"name": "Download Rockets and Data",
+						"name": "Download Rockets Data",
 						"type": "Copy",
 						"dependsOn": [
 							{

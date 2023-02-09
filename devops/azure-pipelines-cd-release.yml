@@ -2,10 +2,14 @@ trigger: none
 
 pr: none
 
+parameters:
+- deploymentId: deploymentId
+  type: string
+
 resources:
   pipelines:
   - pipeline: ciartifacts
-    source: mdwdops-dat1-ci-artifacts
+    source: mdwdops-${{ parameters.deploymentId}}-ci-artifacts
     trigger: 
       branches:
       - main

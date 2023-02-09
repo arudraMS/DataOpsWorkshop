@@ -30,5 +30,5 @@ stages:
   - template: templates/jobs/deploy-adf-job.yml
     parameters:
       environmentName: 'PROD'
-      serviceConnection: 'mdwdops-dat1-serviceconnection-prod'
+      serviceConnection: 'mdwdops-dat1-prod-serviceconnection'
       

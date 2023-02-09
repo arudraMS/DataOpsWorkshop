@@ -2,10 +2,6 @@ trigger: none
 
 pr: none
 
-parameters:
-- deploymentId: deploymentId
-  type: string
-
 resources:
   pipelines:
   - pipeline: ciartifacts

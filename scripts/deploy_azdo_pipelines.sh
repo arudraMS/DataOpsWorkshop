@@ -49,7 +49,7 @@ echo "Creating Pipelines in $AZDO_PIPELINES_BRANCH_NAME"
 createPipeline () {
     declare pipeline_name=$1
     declare pipeline_description=$2
-    full_pipeline_name=${PROJECT}-${DEPLOYMENT_ID}-$pipeline_name
+    full_pipeline_name=${PROJECT}-$pipeline_name
     pipeline_id=$(az pipelines create \
         --name "$full_pipeline_name" \
         --description "$pipeline_description" \

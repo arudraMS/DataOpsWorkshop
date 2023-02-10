@@ -1,27 +1,19 @@
-variables:
-- name: vdeploymentId
-  value: $(deploymentId)
-
 trigger: none
 
 pr: none
 
 
-steps:
-- script: echo $(vdeploymentId) # variable defined in pipeline variables
-
-
 resources:
   pipelines:
   - pipeline: ciartifacts
-    source: mdwdops-$(vdeploymentId)-ci-artifacts
+    source: mdwdops-ci-artifacts
     trigger: 
       branches:
       - main
   repositories:
   - repository: mdwdataops_adfpublish
     type: github
-    endpoint: mdwdops-$(vdeploymentId)-github
+    endpoint: mdwdops-github
     name: arudraMS/DataOpsWorkshop
     ref: adf_publish
 
@@ -34,10 +26,10 @@ stages:
 - stage: deploy_to_prod
   displayName: 'Deploy to Prod'
   variables:
-  - group: mdwdops-$(vdeploymentId)-prod-release
+  - group: mdwdops-prod-release
   jobs: 
   - template: templates/jobs/deploy-adf-job.yml
     parameters:
       environmentName: 'PROD'
-      serviceConnection: 'mdwdops-$(vdeploymentId)-prod-serviceconnection'
+      serviceConnection: 'mdwdops-prod-serviceconnection'
       

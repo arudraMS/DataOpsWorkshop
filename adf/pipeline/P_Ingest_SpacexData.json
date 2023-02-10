@@ -102,7 +102,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Ds_REST_MelbParkingData",
+						"referenceName": "Ds_REST_SpacexData",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeurl": "history"
@@ -111,7 +111,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "Ds_AdlsGen2_MelbParkingData",
+						"referenceName": "Ds_AdlsGen2_SpacexData",
 						"type": "DatasetReference",
 						"parameters": {
 							"infilefolder": {

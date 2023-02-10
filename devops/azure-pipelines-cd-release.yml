@@ -6,6 +6,11 @@ trigger: none
 
 pr: none
 
+
+steps:
+- script: echo $(vdeploymentId) # variable defined in pipeline variables
+
+
 resources:
   pipelines:
   - pipeline: ciartifacts

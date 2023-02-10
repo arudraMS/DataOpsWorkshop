@@ -60,7 +60,7 @@ set -o xtrace # For debugging
 apiBaseUrl="https://data.melbourne.vic.gov.au/resource/"
 
 # Create vargroup
-vargroup_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-release"
+vargroup_name="${PROJECT}-${ENV_NAME}-release"
 if vargroup_id=$(az pipelines variable-group list -o tsv | grep "$vargroup_name" | awk '{print $3}'); then
     echo "Variable group: $vargroup_name already exists. Deleting..."
     az pipelines variable-group delete --id "$vargroup_id" -y

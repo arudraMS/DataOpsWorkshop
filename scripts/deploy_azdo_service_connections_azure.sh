@@ -41,14 +41,14 @@ set -o nounset
 
 ###############
 # Setup Azure service connection
-az_service_connection_name="${PROJECT}-${DEPLOYMENT_ID}-${ENV_NAME}-serviceconnection"
+az_service_connection_name="${PROJECT}-${ENV_NAME}-serviceconnection"
 
 az_sub=$(az account show --output json)
 az_sub_id=$(echo "$az_sub" | jq -r '.id')
 az_sub_name=$(echo "$az_sub" | jq -r '.name')
 
 # Create Service Account
-az_sp_name=${PROJECT}-${ENV_NAME}-${DEPLOYMENT_ID}-sp
+az_sp_name=${PROJECT}-${ENV_NAME}-sp
 echo "Creating service principal: $az_sp_name for azure service connection"
 az_sp=$(az ad sp create-for-rbac \
     --role contributor \

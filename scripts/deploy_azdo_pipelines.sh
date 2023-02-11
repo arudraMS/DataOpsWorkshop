@@ -40,7 +40,7 @@ set -o xtrace # For debugging
 # DEV_DATAFACTORY_NAME
 
 # Retrieve Github Service Connection Id
-github_sc_name="${PROJECT}-${DEPLOYMENT_ID}-github"
+github_sc_name="${PROJECT}-github"
 github_sc_id=$(az devops service-endpoint list --output json |
     jq -r --arg NAME "$github_sc_name" '.[] | select(.name==$NAME) | .id')
 

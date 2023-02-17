@@ -6,6 +6,21 @@ param deployEventHub bool
 @description('Data Factory Name')
 param dataFactoryName string
 
+@description('Git Account Name')
+param gitAccount string
+
+@description('Git Repository Name')
+param gitRepo string
+
+@description('Git Collab Branch Name')
+param gitCollabBranch string
+
+@description('Git Root Folder Name')
+param gitRootFolder string
+
+@description('Git Type Name')
+param gitType string
+
 @description('Storage SKU')
 param storageSKU string
 
@@ -39,6 +54,14 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
 resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
+  properties: {
+    repoConfiguration:
+      accountName: gitAccount
+      repositoryName: gitRepo
+      collaborationBranch: gitCollabBranch
+      rootFolder: gitRootFolder
+      type: gitType
+    }
   identity: {
     type: 'SystemAssigned'
   }

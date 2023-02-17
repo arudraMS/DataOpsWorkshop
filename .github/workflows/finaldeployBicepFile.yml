@@ -21,5 +21,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: infrastructure/finalmain.bicep
-        parameters: 'dataFactoryName=biceptemplateadfexrg storageSKU=Standard_LRS storageAccountName=bicepstaccountexrg deployStorage=true deployADF=true projectName=bicepeventhub deployEventHub=true'
+        parameters: 'dataFactoryName=atnbicepadfexrg storageSKU=Standard_LRS storageAccountName=atnbicepstaccexrg deployStorage=true deployADF=true projectName=atnbicepeventhub deployEventHub=true'
         failOnStdErr: false

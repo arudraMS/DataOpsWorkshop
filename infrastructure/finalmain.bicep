@@ -45,6 +45,14 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
 resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
+  properties: {
+    repoConfiguration:
+      accountName: gitAccount
+      repositoryName: gitRepo
+      collaborationBranch: gitCollabBranch
+      rootFolder: gitRootFolder
+      type: gitType
+    }
   identity: {
     type: 'SystemAssigned'
   }

@@ -46,13 +46,14 @@ resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployAD
   name: dataFactoryName
   location: location
   properties: {
-    repoConfiguration:
+    repoConfiguration: {
       accountName: gitAccount
       repositoryName: gitRepo
       collaborationBranch: gitCollabBranch
       rootFolder: gitRootFolder
       type: gitType
     }
+   }
   identity: {
     type: 'SystemAssigned'
   }

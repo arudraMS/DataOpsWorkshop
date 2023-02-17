@@ -23,6 +23,12 @@ var dataFactoryDataSetInName = 'ArmtemplateTestDatasetIn'
 var dataFactoryDataSetOutName = 'ArmtemplateTestDatasetOut'
 var pipelineName = 'ArmtemplateSampleCopyPipeline'
 
+var gitAccount = 'arudraMS'
+var gitRepo = 'DataOpsWorkshop'
+var gitCollabBranch = 'main'
+var gitRootFolder = 'ADF'
+var gitType = 'FactoryGitHubConfiguration'
+
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = if (deployStorage) {
   name: storageAccountName
   location: location

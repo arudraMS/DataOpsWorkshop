@@ -23,3 +23,4 @@ jobs:
         template: infrastructure/finalmain.bicep
         parameters: 'dataFactoryName=atnbicepadfexrg gitAccount=arudraMS gitRepo=DataOpsWorkshop gitCollabBranch=main gitRootFolder=ADF gitType=FactoryGitHubConfiguration storageSKU=Standard_LRS storageAccountName=atnbicepstaccexrg deployStorage=true deployADF=true projectName=atnbicepeventhub deployEventHub=true'
         failOnStdErr: false
+        

@@ -31,20 +31,6 @@ param projectName string
 ])
 param eventHubSku string = 'Standard'
 
-@description('Name of the Git Account.')
-param gitAccountName string
-
-@description('Name of the Git Repository.')
-param gitRepoName string
-
-@description('Name of the Git Collaboration Branch.')
-param gitCollabBranch string
-
-@description('Name of the Git Root Folder.')
-param gitRootFolder string
-
-@description('Git Type.')
-param gitType string
 
 var eventHubNamespaceName = '${projectName}ns'
 var eventHubName = projectName
@@ -89,15 +75,6 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
 resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
-  properties: {
-    repoConfiguration: {
-      accountName: gitAccountName
-      repositoryName: gitRepoName
-      collaborationBranch: gitCollabBranch
-      rootFolder: gitRootFolder
-      type: gitType
-    }
-   }
   identity: {
     type: 'SystemAssigned'
   }

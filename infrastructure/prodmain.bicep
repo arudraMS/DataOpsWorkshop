@@ -1,7 +1,6 @@
 @description('Conditional resource creation')
 param deployStorage bool
 param deployADF bool
-param deployEventHub bool
 
 @description('Key Vault Name')
 param keyVaultName string

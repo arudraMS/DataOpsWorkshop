@@ -21,19 +21,6 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
-@description('Specifies a project name that is used to generate the Event Hub name and the Namespace name.')
-param projectName string
-
-@description('Specifies the messaging tier for Event Hub Namespace.')
-@allowed([
-  'Basic'
-  'Standard'
-])
-param eventHubSku string = 'Standard'
-
-var eventHubNamespaceName = '${projectName}ns'
-var eventHubName = projectName
-
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName
   location: location
@@ -79,26 +66,3 @@ resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployAD
   }
 }
 
-
-resource eventHubNamespace 'Microsoft.EventHub/namespaces@2021-11-01'  = if (deployEventHub) {
-  name: eventHubNamespaceName
-  location: location
-  sku: {
-    name: eventHubSku
-    tier: eventHubSku
-    capacity: 1
-  }
-  properties: {
-    isAutoInflateEnabled: false
-    maximumThroughputUnits: 0
-  }
-}
-
-resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (deployEventHub)  {
-  parent: eventHubNamespace
-  name: eventHubName
-  properties: {
-    messageRetentionInDays: 7
-    partitionCount: 1
-  }
-}

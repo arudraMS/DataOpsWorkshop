@@ -1,7 +1,7 @@
 @description('Conditional resource creation')
 param deployStorage bool
 param deployADF bool
-param deployEventHub bool
+
 
 @description('Key Vault Name')
 param keyVaultName string
@@ -21,19 +21,6 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
-@description('Specifies a project name that is used to generate the Event Hub name and the Namespace name.')
-param projectName string
-
-@description('Specifies the messaging tier for Event Hub Namespace.')
-@allowed([
-  'Basic'
-  'Standard'
-])
-param eventHubSku string = 'Standard'
-
-
-var eventHubNamespaceName = '${projectName}ns'
-var eventHubName = projectName
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName

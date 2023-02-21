@@ -1,27 +1,50 @@
-on: [push]
-name: Azure ARM
+# on: [push]
+name: Azure Infra
+on: 
+  workflow_dispatch:
+  
 jobs:
-  build-and-deploy:
+  build-dev-environment:
     runs-on: ubuntu-latest
+    environment: Dev
     steps:
-
       # Checkout code
     - uses: actions/checkout@main
-
       # Log into Azure
     - name: Log in With Azure
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      # Deploy Bicep files
-      # gitAccount=arudraMS gitRepo=DataOpsWorkshop gitCollabBranch=main gitRootFolder=ADF gitType=FactoryGitHubConfiguration 
+      # Deploy Bicep file in Dev resource Group
     - name: deploy
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
+        subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/finalmain.bicep
-        parameters: 'dataFactoryName=atnbicepadfexrg storageSKU=Standard_LRS storageAccountName=atnbicepstaccexrg deployStorage=true deployADF=true projectName=atnbicepeventhub deployEventHub=true'
+        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName= ${{ vars.ADF }} storageSKU= ${{ vars.STORAGE_SKU }} storageAccountName= ${{ vars.STORAGE_ACCOUNT }} projectName=${{ vars.EVENTHUB_PROJECTT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} deployEventHub=${{ vars.DEPLOY_EVENTHUB }} gitAccountName=${{ vars.GIT_ACCOUNT_NAME }} gitRepoName=${{ vars.GIT_REPO_NAME }} gitCollabBranch=${{ vars.GIT_COLLAB_BRANCH }} gitRootFolder=${{ vars.GIT_ROOT_FOLDER }} gitType=${{ vars.GIT_TYPE }}'
+        failOnStdErr: false
+  
+  build-prod-environment:
+    runs-on: ubuntu-latest
+    environment: Prod
+    needs: build-dev-environment
+    steps:
+      # Checkout code
+    - uses: actions/checkout@main
+      # Log into Azure
+    - name: Log in With Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      # Deploy Bicep file in Dev resource Group
+    - name: deploy
+      uses: azure/arm-deploy@v1
+      with:
+        subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
+        resourceGroupName: ${{ vars.AZURE_RG }}
+        template: infrastructure/finalmain.bicep
+      # parameters: 'dataFactoryName=atnbicepadfexrg storageSKU=Standard_LRS storageAccountName=atnbicepstaccexrg deployStorage=true deployADF=true projectName=atnbicepeventhub deployEventHub=true'
+        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName= ${{ vars.ADF }} storageSKU= ${{ vars.STORAGE_SKU }} storageAccountName= ${{ vars.STORAGE_ACCOUNT }} projectName=${{ vars.EVENTHUB_PROJECTT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} deployEventHub=${{ vars.DEPLOY_EVENTHUB }}'
         failOnStdErr: false
         

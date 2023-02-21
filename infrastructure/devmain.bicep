@@ -79,27 +79,3 @@ resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployAD
     type: 'SystemAssigned'
   }
 }
-
-
-resource eventHubNamespace 'Microsoft.EventHub/namespaces@2021-11-01'  = if (deployEventHub) {
-  name: eventHubNamespaceName
-  location: location
-  sku: {
-    name: eventHubSku
-    tier: eventHubSku
-    capacity: 1
-  }
-  properties: {
-    isAutoInflateEnabled: false
-    maximumThroughputUnits: 0
-  }
-}
-
-resource eventHub 'Microsoft.EventHub/namespaces/eventhubs@2021-11-01' = if (deployEventHub)  {
-  parent: eventHubNamespace
-  name: eventHubName
-  properties: {
-    messageRetentionInDays: 7
-    partitionCount: 1
-  }
-}

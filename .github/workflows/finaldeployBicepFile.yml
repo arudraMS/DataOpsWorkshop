@@ -22,7 +22,7 @@ jobs:
         subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/devmain.bicep
-        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} projectName=${{ vars.EVENTHUB_PROJECTT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} deployEventHub=${{ vars.DEPLOY_EVENTHUB }}'
+        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }}'
         failOnStdErr: false
   
   build-prod-environment:
@@ -44,7 +44,6 @@ jobs:
         subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/prodmain.bicep
-      # parameters: 'dataFactoryName=atnbicepadfexrg storageSKU=Standard_LRS storageAccountName=atnbicepstaccexrg deployStorage=true deployADF=true projectName=atnbicepeventhub deployEventHub=true'
-        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} projectName=${{ vars.EVENTHUB_PROJECTT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} deployEventHub=${{ vars.DEPLOY_EVENTHUB }}'
+        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }}'
         failOnStdErr: false
         

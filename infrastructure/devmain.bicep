@@ -21,6 +21,11 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
+var gitAccount = 'arudraMS'
+var gitRepo = 'DataOpsWorkshop'
+var gitCollabBranch = 'main'
+var gitRootFolder = 'adf2'
+var gitType = 'FactoryGitHubConfiguration'
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName
@@ -62,6 +67,15 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
 resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
+  properties: {
+    repoConfiguration: {
+      accountName: gitAccountName
+      repositoryName: gitRepoName
+      collaborationBranch: gitCollabBranch
+      rootFolder: gitRootFolder
+      type: gitType
+    }
+   }
   identity: {
     type: 'SystemAssigned'
   }

@@ -21,11 +21,27 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
-var gitAccount = 'arudraMS'
-var gitRepo = 'DataOpsWorkshop'
-var gitCollabBranch = 'main'
-var gitRootFolder = 'adf2'
-var gitType = 'FactoryGitHubConfiguration'
+@description('Name of the Git Account.')
+param gitAccount string
+
+@description('Name of the Git Repository.')
+param gitRepo string
+
+@description('Name of the Git Collaboration Branch.')
+param gitCollab string
+
+@description('Name of the Git Root Folder.')
+param gitRootFolder string
+
+@description('Git Type.')
+param gitType string
+
+var gitAccount = gitAccount
+var gitRepo = gitRepo
+var gitCollabBranch = gitCollab
+var gitRootFolder = gitRootFolder
+var gitType = gitType
+
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName

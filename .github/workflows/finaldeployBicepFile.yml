@@ -22,7 +22,7 @@ jobs:
         subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/devmain.bicep
-        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} gitAccount=${{ vars.GITACCOUNT }} gitRepo=${{ vars.GITREPO }} gitCollab=${{ vars.GITCOLLAB }} gitFolder=${{ vars.GITFOLDER }} gitType=${{ vars.GITTYPE }}'
+        parameters: 'keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} gitAccount=${{ vars.GITACCOUNT }} gitRepo=${{ vars.GITREPO }} gitCollab=${{ vars.GITCOLLAB }} gitFolder=${{ vars.GITFOLDER }}'
         failOnStdErr: false
   
   build-prod-environment:

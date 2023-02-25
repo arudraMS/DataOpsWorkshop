@@ -36,12 +36,6 @@ param gitFolder string = 'adf2'
 @description('Git Type.')
 param gitType string = 'FactoryGitHubConfiguration'
 
-var gitAccount = gitAccount
-var gitRepo = gitRepo
-var gitCollab = gitCollab
-var gitFolder = gitFolder
-var gitType = gitType
-
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName

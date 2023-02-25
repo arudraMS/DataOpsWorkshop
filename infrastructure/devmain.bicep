@@ -31,15 +31,15 @@ param gitRepo string
 param gitCollab string
 
 @description('Name of the Git Root Folder.')
-param gitRootFolder string
+param gitFolder string
 
 @description('Git Type.')
 param gitType string
 
 var gitAccount = gitAccount
 var gitRepo = gitRepo
-var gitCollabBranch = gitCollab
-var gitRootFolder = gitRootFolder
+var gitCollab = gitCollab
+var gitFolder = gitFolder
 var gitType = gitType
 
 
@@ -87,8 +87,8 @@ resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployAD
     repoConfiguration: {
       accountName: gitAccount
       repositoryName: gitRepo
-      collaborationBranch: gitCollabBranch
-      rootFolder: gitRootFolder
+      collaborationBranch: gitCollab
+      rootFolder: gitFolder
       type: gitType
     }
    }

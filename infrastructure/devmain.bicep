@@ -22,19 +22,19 @@ param storageAccountName string
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
 @description('Name of the Git Account.')
-param gitAccount string
+param gitAccount string = 'arudraMS'
 
 @description('Name of the Git Repository.')
-param gitRepo string
+param gitRepo string = 'DataOpsWorkshop'
 
 @description('Name of the Git Collaboration Branch.')
-param gitCollab string
+param gitCollab string = 'main'
 
 @description('Name of the Git Root Folder.')
-param gitFolder string
+param gitFolder string = 'adf2'
 
 @description('Git Type.')
-param gitType string
+param gitType string = 'FactoryGitHubConfiguration'
 
 var gitAccount = gitAccount
 var gitRepo = gitRepo

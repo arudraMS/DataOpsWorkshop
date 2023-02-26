@@ -98,7 +98,7 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
   name: '${storageAccount.name}/default/${blobContainerName}'
 }
 
-resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =  = if (deployADF) {
+resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
   name: dataFactoryName
   location: location
   properties: {

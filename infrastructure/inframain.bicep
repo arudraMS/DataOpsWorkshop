@@ -32,6 +32,8 @@ param gitAccount string
 
 @description('Git Project.')
 param gitProject string
+var _gitProject = (gitType == 'AzureDevOps') ? gitProject: ''
+
 
 @description('Name of the Git Repository.')
 param gitRepo string
@@ -96,7 +98,7 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
   name: '${storageAccount.name}/default/${blobContainerName}'
 }
 
-resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =  {
+resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =  = if (deployADF) {
   name: dataFactoryName
   location: location
   properties: {

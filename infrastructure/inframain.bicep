@@ -102,7 +102,7 @@ resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =
   name: dataFactoryName
   location: location
   properties: {
-    repoConfiguration: (environment == 'development') ? (repositoryType == 'AzureDevOps') ? azDevopsRepoConfiguration : gitHubRepoConfiguration : {}
+    repoConfiguration: (environment == 'development') ? (gitType == 'AzureDevOps') ? azDevopsRepoConfiguration : gitHubRepoConfiguration : {}
     identity: {
       type: 'SystemAssigned'
     }

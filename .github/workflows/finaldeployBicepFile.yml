@@ -22,7 +22,7 @@ jobs:
         subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/inframain.bicep
-        parameters: 'environment=dev keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} gitAccount=${{ vars.GITACCOUNT }} gitRepo=${{ vars.GITREPO }} gitCollab=${{ vars.GITCOLLAB }} gitFolder=${{ vars.GITFOLDER }}'
+        parameters: 'environment="development" keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }} gitAccount=${{ vars.GITACCOUNT }} gitRepo=${{ vars.GITREPO }} gitCollab=${{ vars.GITCOLLAB }} gitFolder=${{ vars.GITFOLDER }}'
         failOnStdErr: false
   
   build-prod-environment:
@@ -44,6 +44,6 @@ jobs:
         subscriptionId: ${{ vars.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ vars.AZURE_RG }}
         template: infrastructure/infradmain.bicep
-        parameters: 'environment=prod keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }}'
+        parameters: 'environment="production" keyVaultName=${{ vars.KEYVAULT }} dataFactoryName=${{ vars.ADF }} storageSKU=${{ vars.STORAGE_SKU }} storageAccountName=${{ vars.STORAGE_ACCOUNT }} deployStorage=${{ vars.DEPLOY_STORAGE }} deployADF=${{ vars.DEPLOY_ADF }}'
         failOnStdErr: false
         

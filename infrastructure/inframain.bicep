@@ -50,7 +50,7 @@ var azDevopsRepoConfiguration = {
   collaborationBranch: gitCollab
   rootFolder: gitFolder  
   type: _repositoryType
-  projectName: gitproject
+  projectName: _gitProject
 }
 
 var gitHubRepoConfiguration = {

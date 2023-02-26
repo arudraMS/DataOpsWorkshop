@@ -24,7 +24,7 @@ param deployStorage bool
 param deployADF bool
 
 @description('Git Type.')
-param gitType string
+param gitType string = ' '
 var _repositoryType = (gitType == 'AzureDevOps') ? 'FactoryVSTSConfiguration' : 'FactoryGitHubConfiguration'
 
 @description('Name of the Git Account.')

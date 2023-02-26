@@ -32,7 +32,7 @@ param gitAccount string
 
 @description('Git Project.')
 param gitProject string
-var _gitProject = (gitType == 'AzureDevOps') ? gitProject: ''
+var _gitProject = (gitType == 'AzureDevOps') ? gitProject: ' '
 
 
 @description('Name of the Git Repository.')
@@ -103,8 +103,8 @@ resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =
   location: location
   properties: {
     repoConfiguration: (environment == 'development') ? (gitType == 'AzureDevOps') ? azDevopsRepoConfiguration : gitHubRepoConfiguration : {}
-    identity: {
-      type: 'SystemAssigned'
-    }
   }
+  identity: {
+  type: 'SystemAssigned'
+}
 }

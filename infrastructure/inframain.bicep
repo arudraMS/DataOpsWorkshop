@@ -1,10 +1,6 @@
 @description('Environment')
 param environment string
 
-@description('Conditional resource creation')
-param deployStorage bool
-param deployADF bool
-
 @description('Key Vault Name')
 param keyVaultName string
 
@@ -22,6 +18,10 @@ param storageAccountName string
 
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
+
+@description('Conditional resource creation')
+param deployStorage bool
+param deployADF bool
 
 @description('Git Type.')
 param gitType string

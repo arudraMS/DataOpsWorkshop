@@ -1,7 +1,9 @@
+@description('Environment')
+param environment
+
 @description('Conditional resource creation')
 param deployStorage bool
 param deployADF bool
-
 
 @description('Key Vault Name')
 param keyVaultName string
@@ -21,21 +23,41 @@ param storageAccountName string
 @description('Name of the blob container in the Azure Storage account.')
 param blobContainerName string = 'blob${uniqueString(resourceGroup().id)}'
 
+@description('Git Type.')
+param gitType string
+var _repositoryType = (gitType == 'AzureDevOps') ? 'FactoryVSTSConfiguration' : 'FactoryGitHubConfiguration'
+
 @description('Name of the Git Account.')
-param gitAccount string = 'arudraMS'
+param gitAccount string
+
+@description('Git Project.')
+param gitProject string
 
 @description('Name of the Git Repository.')
-param gitRepo string = 'DataOpsWorkshop'
+param gitRepo string
 
 @description('Name of the Git Collaboration Branch.')
-param gitCollab string = 'main'
+param gitCollab string
 
 @description('Name of the Git Root Folder.')
-param gitFolder string = 'adf2'
+param gitFolder string
 
-@description('Git Type.')
-param gitType string = 'FactoryGitHubConfiguration'
+var azDevopsRepoConfiguration = {
+  accountName: gitAccount
+  repositoryName: gitRepo
+  collaborationBranch: gitCollab
+  rootFolder: gitFolder  
+  type: _repositoryType
+  projectName: gitproject
+}
 
+var gitHubRepoConfiguration = {
+  accountName: gitAccount
+  repositoryName: gitRepo
+  collaborationBranch: gitCollab
+  rootFolder: gitFolder  
+  type: _repositoryType
+}
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName
@@ -74,19 +96,13 @@ resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/container
   name: '${storageAccount.name}/default/${blobContainerName}'
 }
 
-resource dataFactory 'Microsoft.DataFactory/factories@2018-06-01' = if (deployADF) {
+resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =  {
   name: dataFactoryName
   location: location
   properties: {
-    repoConfiguration: {
-      accountName: gitAccount
-      repositoryName: gitRepo
-      collaborationBranch: gitCollab
-      rootFolder: gitFolder
-      type: gitType
+    repoConfiguration: (environment == 'development') ? (repositoryType == 'AzureDevOps') ? azDevopsRepoConfiguration : gitHubRepoConfiguration : {}
+    identity: {
+      type: 'SystemAssigned'
     }
-   }
-  identity: {
-    type: 'SystemAssigned'
   }
 }

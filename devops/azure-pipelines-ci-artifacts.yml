@@ -20,7 +20,6 @@ stages:
     steps:
     - task: PublishPipelineArtifact@1
       inputs:
-#       targetPath: '$(basePath)/adf/_scripts/deploymentadf.ps1'
-        targetPath: '$(basePath)/infrastructure/deploymentadf.ps1'
+        targetPath: '$(basePath)/adf/_scripts/deploymentadf.ps1'
         ArtifactName: 'adf_scripts'
       displayName: 'Publish ADF Scripts'

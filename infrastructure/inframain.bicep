@@ -28,21 +28,21 @@ param gitType string
 var _repositoryType = (gitType == 'AzureDevOps') ? 'FactoryVSTSConfiguration' : 'FactoryGitHubConfiguration'
 
 @description('Name of the Git Account.')
-param gitAccount string
+param gitAccount string = ' '
 
 @description('Git Project.')
-param gitProject string
+param gitProject string = ' '
 var _gitProject = (gitType == 'AzureDevOps') ? gitProject: ' '
 
 
 @description('Name of the Git Repository.')
-param gitRepo string
+param gitRepo string = ' '
 
 @description('Name of the Git Collaboration Branch.')
-param gitCollab string
+param gitCollab string = ' '
 
 @description('Name of the Git Root Folder.')
-param gitFolder string
+param gitFolder string = ' '
 
 var azDevopsRepoConfiguration = {
   accountName: gitAccount

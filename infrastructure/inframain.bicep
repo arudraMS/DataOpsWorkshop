@@ -1,5 +1,5 @@
 @description('Environment')
-param environment
+param environment string
 
 @description('Conditional resource creation')
 param deployStorage bool

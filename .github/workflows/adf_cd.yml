@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - adf_publish
+    paths:
+      - 'atnadfdevdat2/**'
   workflow_dispatch:
       
 #     - ${{ vars.DEV_DATAFACTORY_NAME }}/**

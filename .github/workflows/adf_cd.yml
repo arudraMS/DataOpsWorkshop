@@ -1,10 +1,9 @@
 name: Workflow to deploy ADF ARM Template to Prod
-on: 
+on:
   push:
-    branches: 
+    branches:
       - adf_publish
-    paths:
-      - atnadfdevdat2/**
+  workflow_dispatch:
       
 #     - ${{ vars.DEV_DATAFACTORY_NAME }}/**
 

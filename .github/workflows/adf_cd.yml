@@ -1,0 +1,75 @@
+
+name: Workflow to deploy ADF ARM Template to Prod
+on: 
+    workflow_dispatch:
+   
+# on: 
+#  push:
+#    branches: 
+#      - adf_publish
+#    paths:
+#      - ${{ vars.DEV_DATAFACTORY_NAME }}/**
+
+
+environment: Prod
+env:
+  AZURE_SP_CLIENT_ID: ${{ secrets.AZURE_CREDENTIALS }}
+  AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION }}      
+  AZURE_RESOURCE_GROUP: ${{ vars.AZURE_RG }}
+  VAULT_NAME: ${{ vars.AZURE_KEYVAULT }}
+  AZURE_PRD_DF_NAME:  ${{ vars.AZURE_DATA_FACTORY }}
+  AZURE_DEV_DF_NAME:  ${{ vars.DEV_DATAFACTORY_NAME }}
+# STORAGE_ACCOUNT_NAME: ${{ vars.AZURE_STORAGE_ACCOUNT }}
+# PROD_STORAGE_CONN: ${{ secrets.PROD_STORAGE_CONN }}
+
+jobs:
+  build-and-deploy-to-prod:
+    runs-on: ubuntu-latest
+    steps:
+    # Authentication
+    # Set up the following secrets in your repository: AZURE_CREDENTIALS
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    # Checkout
+    - name: Checkout
+      uses: actions/checkout@v1
+       
+    #- name: Azure CLI script1
+    #  uses: azure/CLI@v1
+    #  with:
+    #    azcliversion: 2.0.72
+    #    inlineScript: |
+    #      az keyvault set-policy -n $VAULT_NAME --secret-permissions get list --spn ${{ env.AZURE_SP_CLIENT_ID }}
+    #      ACCOUNT_KEY=$(az storage account keys list --resource-group ${{ env.AZURE_RESOURCE_GROUP }} --account-name ${{ env.STORAGE_ACCOUNT_NAME }} --query [0].value -o tsv)
+    #      STORAGE_PROD_CONN="DefaultEndpointsProtocol=https;AccountName=${{ env.STORAGE_ACCOUNT_NAME }};AccountKey=$ACCOUNT_KEY;EndpointSuffix=core.windows.net"
+    #      az keyvault secret set --vault-name $VAULT_NAME --name $STORAGE_ACCOUNT_KEY --value $STORAGE_PROD_CONN
+    
+    #- uses: Azure/get-keyvault-secrets@v1.0
+    #  with:
+    #   keyvault: ${{ env.VAULT_NAME }}
+    #    secrets: 'storageconn'
+    #  id: myGetSecretAction
+    
+    #- name: Azure CLI script2
+    #  uses: azure/CLI@v1
+    #  with:
+    #    azcliversion: 2.0.72
+    #    inlineScript: |
+    #      echo ${{ steps.myGetSecretAction.outputs.storage_conn }}
+    
+    #Deployment of ARM template    
+    - name: Deploy ARM Template
+      uses: azure/arm-deploy@v1
+      with:
+        # You can change these environment variables for your configuration:   AZURE_SUBSCRIPTION_ID, AZURE_RESOURCE_GROUP
+        subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
+        resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
+        template: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateForFactory.json             
+        parameters: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateParametersForFactory.json 
+                    factoryName=${{ env.AZURE_PRD_DF_NAME }} 
+                    AzureDataLakeStorage1_accountKey="mxnXyI6IYcpzRyCdZoH/wgyhtricYpJooLHS8bqUm0A1oStDz/gGZsBj8UAJfLhaI/PwK8QHUJeO+AStQoN0XA=="
+                    AzureDataLakeStorage1_properties_typeProperties_url="https://mdwdopsstrgproddat2.dfs.core.windows.net/"
+                    RestService1_properties_typeProperties_url="https://api.spacexdata.com/v3/"

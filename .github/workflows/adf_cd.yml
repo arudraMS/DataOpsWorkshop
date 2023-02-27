@@ -5,7 +5,6 @@ on:
       - adf_publish
     paths:
       - 'atnadfdevdat2/**'
-  workflow_dispatch:
       
 #     - ${{ vars.DEV_DATAFACTORY_NAME }}/**
 
@@ -39,8 +38,8 @@ jobs:
         # You can change these environment variables for your configuration:   AZURE_SUBSCRIPTION_ID, AZURE_RESOURCE_GROUP
         subscriptionId: ${{ env.AZURE_SUBSCRIPTION_ID }}
         resourceGroupName: ${{ env.AZURE_RESOURCE_GROUP }}
-        template: ${{ github.workspace }}/adf_publish/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateForFactory.json             
-        parameters: ${{ github.workspace }}/adf_publish/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateParametersForFactory.json 
+        template: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateForFactory.json             
+        parameters: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateParametersForFactory.json 
                     factoryName=${{ env.AZURE_PRD_DF_NAME }} 
                     AzureDataLakeStorage1_accountKey="mxnXyI6IYcpzRyCdZoH/wgyhtricYpJooLHS8bqUm0A1oStDz/gGZsBj8UAJfLhaI/PwK8QHUJeO+AStQoN0XA=="
                     AzureDataLakeStorage1_properties_typeProperties_url="https://mdwdopsstrgproddat2.dfs.core.windows.net/"

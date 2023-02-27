@@ -4,8 +4,8 @@ on:
   push:
     branches: 
       - adf_publish
-    paths:
-      - ${{ vars.DEV_DATAFACTORY_NAME }}/**
+#   paths:
+#     - ${{ vars.DEV_DATAFACTORY_NAME }}/**
 
 jobs:
   build-and-deploy-to-prod:

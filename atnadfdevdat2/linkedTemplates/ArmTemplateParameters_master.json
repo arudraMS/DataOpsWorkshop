@@ -8,11 +8,11 @@
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
-		"RestService1_properties_typeProperties_url": {
-			"value": "https://api.spacexdata.com/v3/"
-		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"value": "https://mdwdopsstrgdevdat2.dfs.core.windows.net/"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://api.spacexdata.com/v3/"
 		},
 		"containerUri": {
 			"value": ""

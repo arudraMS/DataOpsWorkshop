@@ -3,6 +3,10 @@ on:
   push:
     branches:
       - 'adf_publish'
+      
+  release:
+    types: [published]
+    
 #   paths:
 #     - 'atnadfdevdat2/**'
     

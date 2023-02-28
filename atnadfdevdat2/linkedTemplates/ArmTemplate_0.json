@@ -106,7 +106,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Sample testing Copy data7",
+						"name": "Sample testing Copy data5",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {

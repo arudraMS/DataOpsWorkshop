@@ -6,7 +6,7 @@ on:
     paths:
       - 'atnadfdevdat2/**'
     
-  workflow_dispatch:
+#  workflow_dispatch:
     
 #     - ${{ vars.DEV_DATAFACTORY_NAME }}/**
 

@@ -31,7 +31,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Sample testing Copy data6",
+						"name": "Sample testing Copy8",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -83,7 +83,8 @@
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
 				},
-				"annotations": []
+				"annotations": [],
+				"lastPublishTime": "2023-02-28T01:23:24Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/RestResource1')]",

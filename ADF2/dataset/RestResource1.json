@@ -11,5 +11,6 @@
 			"relativeUrl": "rockets"
 		},
 		"schema": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

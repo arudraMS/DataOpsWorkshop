@@ -24,7 +24,7 @@ Session 2 (DataOps & MLOps):
 
 
 #### Open Accounts in the following portal
-- Azure 
+- Azure
 - Github
 - Azure DevOps (ADO)
 

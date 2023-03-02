@@ -1,11 +1,11 @@
 name: Workflow to deploy ADF ARM Template to Prod
-on: 
-  workflow_dispatch:
+# on: 
+#  workflow_dispatch:
   
-#on:
-#  push:
-#    branches:
-#      - 'adf_publish'
+on:
+  push:
+    branches:
+      - 'adf_publish'
       
 #  release:
 #    types: [published]

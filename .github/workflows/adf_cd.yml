@@ -4,7 +4,7 @@ name: Workflow to deploy ADF ARM Template to Prod
 
 on:
   push:
-    branches: [ main, dev ]
+    branches: [ dev ]
     
 # on:
 #  push:

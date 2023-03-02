@@ -4,6 +4,12 @@ param environment string
 @description('Key Vault Name')
 param keyVaultName string
 
+@description('Client ID of service principal to be associated with Azure Keyvault Service')
+param spnClientID string
+
+@description('Client ID of portal user to be associated with Azure Keyvault Service')
+param userObjectID string
+
 @description('Data Factory Name')
 param dataFactoryName string
 
@@ -87,6 +93,7 @@ resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =
 
 var datafactory_principal_id string = dataFactoryName_resource.identity.principalId
 
+
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: keyVaultName
   location: location
@@ -111,7 +118,19 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
         accessPolicies: [
       {
         tenantId: subscription().tenantId
-        objectId: keyvault_owner_object_id
+        objectId: spnClientID
+        permissions: {
+            keys: [
+                'all'
+            ]
+            secrets: [
+                'all'
+            ]
+        }
+      }
+      {
+        tenantId: subscription().tenantId
+        objectId: userObjectID
         permissions: {
             keys: [
                 'all'

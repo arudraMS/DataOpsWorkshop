@@ -91,7 +91,7 @@ resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =
 }
 }
 
-var datafactory_principal_id string = dataFactoryName_resource.identity.principalId
+//var datafactory_principal_id string = dataFactoryName_resource.identity.principalId
 
 
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
@@ -142,7 +142,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
       }
       {
           tenantId: subscription().tenantId
-          objectId: datafactory_principal_id
+          objectId: dataFactoryName_resource.identity.principalId
           permissions: {
               secrets: [
                   'get'

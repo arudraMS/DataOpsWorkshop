@@ -61,30 +61,6 @@ var gitHubRepoConfiguration = {
   type: _repositoryType
 }
 
-resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
-  name: keyVaultName
-  location: location
-  properties: {
-    createMode: 'default'
-    enabledForDeployment: false
-    enabledForDiskEncryption: false
-    enabledForTemplateDeployment: false
-//  enableSoftDelete: true
-    enableRbacAuthorization: true
-//  enablePurgeProtection: true
-    networkAcls: {
-      bypass: 'AzureServices'
-      defaultAction: 'Deny'
-    }
-    sku: {
-      family: 'A'
-      name: 'standard'
-    }
-    softDeleteRetentionInDays: 7
-    tenantId: subscription().tenantId
-  }
-}
-
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-08-01' = if (deployStorage) {
   name: storageAccountName
   location: location
@@ -107,4 +83,52 @@ resource dataFactoryName_resource 'Microsoft.DataFactory/factories@2018-06-01' =
   identity: {
   type: 'SystemAssigned'
 }
+}
+
+resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
+  name: keyVaultName
+  location: location
+  properties: {
+    createMode: 'default'
+    enabledForDeployment: false
+    enabledForDiskEncryption: false
+    enabledForTemplateDeployment: false
+//  enableSoftDelete: true
+    enableRbacAuthorization: true
+//  enablePurgeProtection: true
+    networkAcls: {
+      bypass: 'AzureServices'
+      defaultAction: 'Deny'
+    }
+    sku: {
+      family: 'A'
+      name: 'standard'
+    }
+    softDeleteRetentionInDays: 7
+    tenantId: subscription().tenantId
+        accessPolicies: [
+      {
+        tenantId: subscription().tenantId
+        objectId: keyvault_owner_object_id
+        permissions: {
+            keys: [
+                'all'
+            ]
+            secrets: [
+                'all'
+            ]
+        }
+      }
+      {
+          tenantId: subscription().tenantId
+          objectId: datafactory_principal_id
+          permissions: {
+              secrets: [
+                  'get'
+                  'list'
+              ]
+          }
+      }
+    ]
+  }
 }

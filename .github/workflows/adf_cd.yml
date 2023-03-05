@@ -9,7 +9,7 @@ on:
 # on:
 #  push:
 #    branches:
-#      - main la
+#      - main
       
 #  release:
 #    types: [published]

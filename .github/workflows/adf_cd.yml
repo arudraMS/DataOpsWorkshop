@@ -56,6 +56,6 @@ jobs:
         template: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateForFactory.json             
         parameters: ${{ github.workspace }}/${{ env.AZURE_DEV_DF_NAME }}/ARMTemplateParametersForFactory.json 
                     factoryName=${{ env.AZURE_PRD_DF_NAME }} 
-                    AzureDataLakeStorage1_accountKey="mxnXyI6IYcpzRyCdZoH/wgyhtricYpJooLHS8bqUm0A1oStDz/gGZsBj8UAJfLhaI/PwK8QHUJeO+AStQoN0XA=="
+                    AzureKeyVault1_properties_typeProperties_base Url="https://mdwdopskvproddat2.vault.azure.net/"
                     AzureDataLakeStorage1_properties_typeProperties_url="https://mdwdopsstrgproddat2.dfs.core.windows.net/"
                     RestService1_properties_typeProperties_url="https://api.spacexdata.com/v3/"
